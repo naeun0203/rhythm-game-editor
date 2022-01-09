@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class ObjectPoolManager : MonoBehaviour
 {
-    private static ObjectPoolManager instance;
-
-    // Start is called before the first frame update
-    void Start()
+    private static ObjectPoolManager staticInstance;
+    public ObjectPool pool;
+    public static ObjectPoolManager Instance()
     {
-        
+        if(staticInstance == null)
+        {
+            staticInstance = new ObjectPoolManager();
+        }
+        return staticInstance;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if(staticInstance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        staticInstance = this;
     }
 }

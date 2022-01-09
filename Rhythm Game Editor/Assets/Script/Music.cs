@@ -17,6 +17,7 @@ public class Music : MonoBehaviour
         BeatSpeed = BeatTime + 1;
         Debug.Log(BeatTime);
         Debug.Log(BPM);
+        Debug.Log(BeatSpeed);
     }
     private void MusicPlay()
     {
