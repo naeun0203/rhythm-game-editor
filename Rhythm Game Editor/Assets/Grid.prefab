@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5688259566136177849}
   m_Layer: 0
   m_Name: 16Beat
-  m_TagString: Untagged
+  m_TagString: BeatBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 10, y: 0.08, z: 1}
   m_Children: []
   m_Father: {fileID: 5688259567766120363}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5688259566136177849
 SpriteRenderer:
@@ -112,8 +112,8 @@ Transform:
   m_Children:
   - {fileID: 7092800074621881035}
   - {fileID: 5688259567899896631}
-  - {fileID: 5688259566136177848}
   - {fileID: 8790447359320549981}
+  - {fileID: 5688259566136177848}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -129,11 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b670c5a66e9cf44f93e2a11fd83daed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool: {fileID: 0}
   music: {fileID: 0}
-  GridPrefab:
-  - {fileID: 5688259567766120362}
-  - {fileID: 5688259567766120362}
-  - {fileID: 5688259567766120362}
 --- !u!1 &5688259567899896630
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +143,7 @@ GameObject:
   - component: {fileID: 5688259567899896632}
   m_Layer: 0
   m_Name: 16Beat
-  m_TagString: Untagged
+  m_TagString: BeatBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,7 +225,7 @@ GameObject:
   - component: {fileID: 4100894257962948400}
   m_Layer: 0
   m_Name: BeatBar
-  m_TagString: Untagged
+  m_TagString: BeatBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,7 +307,7 @@ GameObject:
   - component: {fileID: 3735527936585459586}
   m_Layer: 0
   m_Name: 8Beat
-  m_TagString: Untagged
+  m_TagString: BeatBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,7 +324,7 @@ Transform:
   m_LocalScale: {x: 10, y: 0.08, z: 1}
   m_Children: []
   m_Father: {fileID: 5688259567766120363}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3735527936585459586
 SpriteRenderer:

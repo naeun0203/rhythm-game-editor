@@ -17,10 +17,9 @@ public class Grid : Poolable
             CreateGrid();
         }
     }
-
-    private void MoveGrid()
+        private void MoveGrid()
     {
-        this.transform.Translate(Vector2.down * Time.deltaTime * 3 * music.BeatSpeed);
+        this.transform.Translate(Vector2.down * Time.smoothDeltaTime * 3 * music.BeatSpeed);
     }
     private void DestoryGrid()
     {
