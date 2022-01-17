@@ -2,31 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : Poolable
+public class Grid : MonoBehaviour
 {
+    public EditorManager editor;
     public Music music;
     private void Update()
     {
-        if (music.isPlay)
+        if (editor.isPlay)
         {
             MoveGrid();
         }
-        if (this.transform.position.y <= -10)
+        if (editor.isScroll)
         {
-            DestoryGrid();
-            CreateGrid();
+            ScrollGrid();
         }
     }
-        private void MoveGrid()
+    private void BeatBarLocation()
     {
-        this.transform.Translate(Vector2.down * Time.smoothDeltaTime * 3 * music.BeatSpeed);
+
     }
-    private void DestoryGrid()
+    private void ScrollGrid()
     {
-        Push();
+        if (editor.Scroll < 0)
+        {
+            this.transform.Translate(Vector2.up * 0.5f);
+            music.ScrollMusic(-0.1f);
+        }
+        if (editor.Scroll > 0)
+        {
+            this.transform.Translate(Vector2.down * 0.5f);
+            music.ScrollMusic(0.1f);
+        }
     }
-    private void CreateGrid()
+    private void MoveGrid()
     {
-        ObjectPoolManager.Instance().pool.Pop().transform.position = new Vector2(0, 8);
+        this.transform.Translate(Vector2.down * Time.smoothDeltaTime * 5);
     }
 }

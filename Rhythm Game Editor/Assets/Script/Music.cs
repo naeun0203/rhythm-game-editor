@@ -4,31 +4,27 @@ using UnityEngine;
 
 public class Music : MonoBehaviour
 {
+    public EditorManager editor;
     public AudioSource audio;
     public int BPM = 100;
     public float BeatTime;
-    public float BeatSpeed;
 
-    public bool isPlay = false;
-    // Start is called before the first frame update
     void Awake()
     {
         BeatTime = 60 / (float)BPM;
-        BeatSpeed = BeatTime + 1;
         Debug.Log(BeatTime);
         Debug.Log(BPM);
-        Debug.Log(BeatSpeed);
     }
     private void MusicPlay()
     {
         audio.Play();
-        isPlay = true;
+        editor.isPlay = true;
     }
 
     private void MusicPause()
     {
         audio.Pause();
-        isPlay = false;
+        editor.isPlay = false;
     }
     // Update is called once per frame
     void Update()
@@ -36,7 +32,7 @@ public class Music : MonoBehaviour
         if(Input.GetKeyDown("space"))
         {
             Debug.Log(audio.time);
-            if (!isPlay)
+            if (!editor.isPlay)
             {
                 MusicPlay();
             }
@@ -45,8 +41,15 @@ public class Music : MonoBehaviour
                 MusicPause();
             }
         }
+    }
 
-
+    public void ScrollMusic(float time)
+    {
+        float currentTime = audio.time;
+        currentTime += time;
+        currentTime = Mathf.Clamp(currentTime, 0f, audio.clip.length - 0.0001f);
+        audio.time = currentTime;
+        Debug.Log(audio.time);
     }
     private void Beat()
     {

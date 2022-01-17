@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NoteContral : MonoBehaviour
 {
+    public MusicData data;
     public GameObject note;
     public GameObject NoteArea;
     public GameObject[] Line;
@@ -41,6 +42,7 @@ public class NoteContral : MonoBehaviour
     {
         GameObject NoteClone = Instantiate(note, noteLocation(), Quaternion.identity) as GameObject;
         NoteClone.transform.parent = GameObject.FindWithTag("BeatBar").transform;
+        data.InputData(NoteClone);
     }
     private void UnDisposeObject()
     {
