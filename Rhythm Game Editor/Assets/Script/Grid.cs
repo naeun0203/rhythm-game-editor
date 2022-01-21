@@ -6,22 +6,12 @@ public class Grid : MonoBehaviour
 {
     public EditorManager editor;
     public Music music;
-    private void Update()
-    {
-        if (editor.isPlay)
-        {
-            MoveGrid();
-        }
-        if (editor.isScroll)
-        {
-            ScrollGrid();
-        }
-    }
+
     private void BeatBarLocation()
     {
 
     }
-    private void ScrollGrid()
+    public void ScrollGrid()
     {
         if (editor.Scroll < 0)
         {
@@ -34,7 +24,7 @@ public class Grid : MonoBehaviour
             music.ScrollMusic(0.1f);
         }
     }
-    private void MoveGrid()
+    public void MoveGrid()
     {
         this.transform.Translate(Vector2.down * Time.smoothDeltaTime * 5);
     }

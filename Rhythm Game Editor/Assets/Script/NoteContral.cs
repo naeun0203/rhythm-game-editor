@@ -11,8 +11,9 @@ public class NoteContral : MonoBehaviour
     public GameObject[] Line;
     public GameObject[] BeatBar;
     Camera Camera;
-    Vector2 mousePos;
-    Ray2D mouse;
+    Vector3 mousePos;
+    Vector3 NotePos;
+    Ray ray;
     // Start is called before the first frame update
     private void Start()
     {
@@ -30,9 +31,19 @@ public class NoteContral : MonoBehaviour
         {
             DisposeObject();
             UnDisposeObject();
+            Ray();
         }
     }
+    private void Ray()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(NotePos, NotePos - Camera.main.ScreenToWorldPoint(NotePos), Mathf.Infinity);
+        Debug.DrawRay(NotePos, NotePos - Camera.main.ScreenToWorldPoint(NotePos), Color.blue);
 
+        if (hit)
+        {
+            //targetPos = hit.collider.gameObject.transform.position;
+        }
+    }
     private void noteMove()
     {
         mousePos = Camera.ScreenToWorldPoint(Input.mousePosition);

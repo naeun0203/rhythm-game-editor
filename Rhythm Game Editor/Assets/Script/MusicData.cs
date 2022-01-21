@@ -4,20 +4,28 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 [System.Serializable]
-public struct Note
+public class Note
 {
-    public int type;
-    public int LineNum;
-    public double startTime;
-    public double endTime;
+    private int Type;
+    private int LineNum;
+    private double startTime;
+    private double endTime;
+
+    public Note(int type, int Line, double start, double end)
+    {
+        Type = type;
+        LineNum = Line;
+        startTime = start;
+        endTime = end;
+    }
 }
 [System.Serializable]
-public struct NoteData
+public class NoteData
 {
     public string Music;
     public float BPM;
     public int noteCount;
-    public Note[] note;
+    public List<Note> note = new List<Note>();
 }
 public class MusicData : MonoBehaviour
 {
@@ -27,12 +35,12 @@ public class MusicData : MonoBehaviour
     public void SaveNoteData()
     {
         string jsonData = JsonUtility.ToJson(noteData, true);
-        string path = Path.Combine(Application.dataPath, "/musmusData.json");
+        string path = Path.Combine(Application.dataPath + "/Audio/musmusData.json");
         File.WriteAllText(path, jsonData);
     }
     public void LoadNoteData()
     {
-        string path = Path.Combine(Application.dataPath, "/musmusData.json");
+        string path = Path.Combine(Application.dataPath, "/Audio/musmusData.json");
         string jsonData = File.ReadAllText(path);
         noteData = JsonUtility.FromJson<NoteData>(jsonData);
     }
@@ -40,13 +48,7 @@ public class MusicData : MonoBehaviour
     public void InputData(GameObject NoteClone)
     {
         noteData.noteCount++;
-        Array.Resize(ref noteData.note, noteData.noteCount);
-        Debug.Log(NoteLine(NoteClone));
-        Debug.Log(StartTime(NoteClone));
-        Debug.Log(noteData.noteCount);
-        noteData.note[noteData.noteCount-1].startTime = StartTime(NoteClone);
-        noteData.note[noteData.noteCount-1].LineNum = NoteLine(NoteClone);
-
+        noteData.note.Add(new Note(0, NoteLine(NoteClone), StartTime(NoteClone), 0));
     }
     public int NoteLine(GameObject NoteClone)
     {

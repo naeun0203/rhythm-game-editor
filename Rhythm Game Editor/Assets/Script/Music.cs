@@ -15,32 +15,16 @@ public class Music : MonoBehaviour
         Debug.Log(BeatTime);
         Debug.Log(BPM);
     }
-    private void MusicPlay()
+    public void MusicPlay()
     {
         audio.Play();
         editor.isPlay = true;
     }
 
-    private void MusicPause()
+    public void MusicPause()
     {
         audio.Pause();
         editor.isPlay = false;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown("space"))
-        {
-            Debug.Log(audio.time);
-            if (!editor.isPlay)
-            {
-                MusicPlay();
-            }
-            else 
-            {
-                MusicPause();
-            }
-        }
     }
 
     public void ScrollMusic(float time)
