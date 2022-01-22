@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BeatBar
   - Note
+  - Grid
   layers:
   - Default
   - TransparentFX

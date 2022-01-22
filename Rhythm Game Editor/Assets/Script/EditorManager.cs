@@ -15,6 +15,10 @@ public class EditorManager : MonoBehaviour
 
     private void Update()
     {
+        controlar();
+    }
+    private void controlar()
+    {
         OnScroll();
         if (isPlay)
         {
@@ -36,7 +40,6 @@ public class EditorManager : MonoBehaviour
             }
         }
     }
-
     private void OnScroll()
     {
         if (Input.mouseScrollDelta.y > 0)

@@ -9,7 +9,7 @@ public class NoteContral : MonoBehaviour
     public GameObject note;
     public GameObject NoteArea;
     public GameObject[] Line;
-    public GameObject[] BeatBar;
+    public Transform[] BeatBar;
     Camera Camera;
     Vector3 mousePos;
     Vector3 NotePos;
@@ -18,10 +18,11 @@ public class NoteContral : MonoBehaviour
     private void Start()
     {
         Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        BeatBar = GameObject.FindGameObjectsWithTag("BeatBar");
+        BeatBar = GameObject.FindGameObjectWithTag("Grid").GetComponentsInChildren<Transform>();
     }
     void Update()
     {
+        Ray();
         if (note.activeSelf == true)
         {
             noteMove();
@@ -31,23 +32,39 @@ public class NoteContral : MonoBehaviour
         {
             DisposeObject();
             UnDisposeObject();
-            Ray();
+
         }
     }
+
     private void Ray()
     {
-        RaycastHit2D hit = Physics2D.Raycast(NotePos, NotePos - Camera.main.ScreenToWorldPoint(NotePos), Mathf.Infinity);
-        Debug.DrawRay(NotePos, NotePos - Camera.main.ScreenToWorldPoint(NotePos), Color.blue);
-
-        if (hit)
+        mousePos = Camera.ScreenToWorldPoint(Input.mousePosition);
+        Ray2D ray = new Ray2D(mousePos, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        if (hit.collider != null)
         {
-            //targetPos = hit.collider.gameObject.transform.position;
+            if (hit.collider.name == this.gameObject.name)
+            {
+                NoteEnabled();
+            }
+        }
+        else
+        {
+            NoteDisable();
         }
     }
     private void noteMove()
     {
-        mousePos = Camera.ScreenToWorldPoint(Input.mousePosition);
         note.transform.position = noteLocation();
+    }
+    private void NoteEnabled()
+    {
+        note.SetActive(true);
+    }
+    private void NoteDisable()
+    {
+        note.SetActive(false);
+
     }
     private void DisposeObject()
     {
