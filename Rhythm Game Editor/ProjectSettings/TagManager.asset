@@ -4,9 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - BeatBar
   - Note
   - Grid
+  - Beat16
+  - Beat8
+  - BeatBar
   layers:
   - Default
   - TransparentFX

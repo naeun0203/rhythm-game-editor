@@ -5,34 +5,32 @@ using UnityEngine;
 
 public class NoteContral : MonoBehaviour
 {
+    public EditorManager manager;
     public MusicData data;
     public GameObject note;
     public GameObject NoteArea;
-    public GameObject[] Line;
-    public Transform[] BeatBar;
     Camera Camera;
     Vector3 mousePos;
-    Vector3 NotePos;
-    Ray ray;
     // Start is called before the first frame update
     private void Start()
     {
         Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        BeatBar = GameObject.FindGameObjectWithTag("Grid").GetComponentsInChildren<Transform>();
     }
     void Update()
     {
         Ray();
+        //hitNote();
         if (note.activeSelf == true)
         {
             noteMove();
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            DisposeObject();
-            UnDisposeObject();
-
+            if (Input.GetMouseButtonDown(0))
+            {
+                DisposeObject();
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                UnDisposeObject();
+            }
         }
     }
 
@@ -46,6 +44,16 @@ public class NoteContral : MonoBehaviour
             if (hit.collider.name == this.gameObject.name)
             {
                 NoteEnabled();
+            }
+            if (hit.collider.gameObject.CompareTag("Note"))
+            {
+                noteTrigger = true;
+                TriggerObject = hit.collider.gameObject;
+            }
+            else
+            {
+                noteTrigger = false;
+                TriggerObject = null;
             }
         }
         else
@@ -64,35 +72,81 @@ public class NoteContral : MonoBehaviour
     private void NoteDisable()
     {
         note.SetActive(false);
-
     }
+
+    private bool NoteCheck()
+    {
+        bool Check = true;
+        return Check;
+    }
+
     private void DisposeObject()
     {
-        GameObject NoteClone = Instantiate(note, noteLocation(), Quaternion.identity) as GameObject;
-        NoteClone.transform.parent = GameObject.FindWithTag("BeatBar").transform;
-        data.InputData(NoteClone);
+        if(NoteCheck())
+        {
+            GameObject NoteClone = Instantiate(note, noteLocation(), Quaternion.identity) as GameObject;
+            NoteClone.tag = "Note";
+            NoteClone.transform.parent = GameObject.Find("NoteContainer").transform;
+            data.InputData(NoteClone, currentColor);
+        }
     }
-    private void UnDisposeObject()
+    private int currentColor;
+    public void ChangeColor(float colorNum)
     {
-
+        switch (colorNum)
+        {
+            case 0:
+                note.GetComponent<SpriteRenderer>().color = Color.red;
+                currentColor = 0;
+                break;
+            case 1:
+                note.GetComponent<SpriteRenderer>().color = Color.blue;
+                currentColor = 1;
+                break;
+        }
     }
 
-    private Vector2 noteLocation()
+    public void UnDisposeObject()
+    {
+        if(TriggerObject != null)
+        {
+            Destroy(TriggerObject);
+        }
+    }
+    public bool noteTrigger;
+    public GameObject TriggerObject;
+/*    private void hitNote()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(note.transform.position, Vector2.zero);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.CompareTag("Note"))
+            {
+                noteTrigger = true;
+                TriggerObject = hit.collider.gameObject;
+            }
+        }
+    }*/
+        private Vector2 noteLocation()
     {
         float x = 0;
         float y = 0;
-        for (int i = 0; i < Line.Length - 1; i++)
+        for (int i = 0; i < manager.Line.Length - 1; i++)
         {
-            if (mousePos.x > Line[i].transform.position.x && mousePos.x < Line[i+1].transform.position.x)
+            if (mousePos.x > manager.Line[i].transform.position.x && mousePos.x < manager.Line[i+1].transform.position.x)
             {
-                x = (Line[i].transform.position.x + Line[i + 1].transform.position.x) / 2;
+                x = (manager.Line[i].transform.position.x + manager.Line[i + 1].transform.position.x) / 2;
             }
         }
-        for (int i = 0; i < BeatBar.Length - 1; i++)
+        for (int i = 0; i < manager.BeatBar.Count-1; i++)
         {
-            if ( mousePos.y > BeatBar[i].transform.position.y && mousePos.y < BeatBar[i + 1].transform.position.y)
+            if ( mousePos.y > manager.BeatBar[i].transform.position.y)
             {
-                y = BeatBar[i].transform.position.y;
+                if(mousePos.y < manager.BeatBar[i + 1].transform.position.y)
+                {
+                    y = manager.BeatBar[i].transform.position.y;
+                }
             }
         }
         return new Vector2(x, y);

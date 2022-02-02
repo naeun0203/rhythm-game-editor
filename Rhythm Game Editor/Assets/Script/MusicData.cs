@@ -2,21 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+
 [System.Serializable]
 public class Note
 {
-    private int Type;
-    private int LineNum;
-    private double startTime;
-    private double endTime;
+    public int Type; // 0-> short 1-> long
+    public int Color; // 0-> red 1-> blue
+    public int LineNum;
+    public double StartTime;
+    public double EndTime; //long노트 사용시 사용
 
-    public Note(int type, int Line, double start, double end)
+    public Note(int type,int color, int Line, double start, double end)
     {
         Type = type;
+        Color = color;
         LineNum = Line;
-        startTime = start;
-        endTime = end;
+        StartTime = start;
+        EndTime = end;
     }
 }
 [System.Serializable]
@@ -29,26 +34,44 @@ public class NoteData
 }
 public class MusicData : MonoBehaviour
 {
+    public EditorManager manager;
+    public Grid grid;
+    public Dropdown MusicList;
+    public Music music;
     public NoteData noteData;
-    public NoteContral noteContral;
     [ContextMenu("To Json Data")]
     public void SaveNoteData()
     {
         string jsonData = JsonUtility.ToJson(noteData, true);
-        string path = Path.Combine(Application.dataPath + "/Audio/musmusData.json");
+        string path = Path.Combine(Application.dataPath + "/Audio/" + noteData.Music + "Data.json");
         File.WriteAllText(path, jsonData);
     }
     public void LoadNoteData()
     {
-        string path = Path.Combine(Application.dataPath, "/Audio/musmusData.json");
+        string path = Path.Combine(Application.dataPath + "/Audio/" + MusicList.options[MusicList.value].text + "Data.json");
         string jsonData = File.ReadAllText(path);
         noteData = JsonUtility.FromJson<NoteData>(jsonData);
+        music.ChangeMusic();
+        music.Beat();
+        music.MusicStop();
+        manager.InputBeatBar();
+        grid.CreateGrid();
     }
     
-    public void InputData(GameObject NoteClone)
+    private void Awake()
+    {
+        LoadNoteData();
+    }
+
+    public void InputData(GameObject Note, int color)
     {
         noteData.noteCount++;
-        noteData.note.Add(new Note(0, NoteLine(NoteClone), StartTime(NoteClone), 0));
+        noteData.note.Add(new Note(0, color, NoteLine(Note), music.CurrentMusicTime(Note.transform.position), 0));
+        noteData.note = noteData.note.OrderBy(x => x.StartTime).ToList();
+    }
+    public void OutputData(GameObject NoteClone)
+    {
+
     }
     public int NoteLine(GameObject NoteClone)
     {
@@ -71,16 +94,4 @@ public class MusicData : MonoBehaviour
         return LineNum;
     }
 
-    public double StartTime(GameObject NoteClone)
-    {
-        double time = 0;
-        for(int i = 0; i < noteContral.BeatBar.Length;  i++)
-        {
-            if(NoteClone.transform.position.y == noteContral.BeatBar[i].transform.position.y)
-            {
-                time = i * 0.75;
-            }
-        }
-        return time;
-    }
 }

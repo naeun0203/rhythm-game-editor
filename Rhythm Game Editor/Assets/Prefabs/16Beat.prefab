@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6857128812003767074}
   m_Layer: 0
   m_Name: 16Beat
-  m_TagString: BeatBar
+  m_TagString: Beat16
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

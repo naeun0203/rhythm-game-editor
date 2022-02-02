@@ -12,17 +12,40 @@ public class EditorManager : MonoBehaviour
     public Grid grid;
     public Music music;
     public NoteContral noteContral;
+    public GameObject[] Line;
+    public List<Transform> BeatBar = new List<Transform>();
+    public GameObject[] Grid;
 
+    void Awake()
+    {
+        Grid = GameObject.FindGameObjectsWithTag("Grid");
+        for(int i = 0; i < Grid.Length; i++)
+        {
+            for(int j = 0; j < Grid[i].transform.childCount; j++)
+            {
+                BeatBar.Add(Grid[i].transform.GetChild(j));
+            }
+        }
+
+    }
     private void Update()
     {
         controlar();
+
+        grid.GridLocation();
+        
     }
+    public void InputBeatBar()
+    {
+
+    }
+
     private void controlar()
     {
         OnScroll();
         if (isPlay)
         {
-            grid.MoveGrid();
+            grid.MoveGrid(Vector2.down * Time.smoothDeltaTime * 5);
         }
         if (isScroll)
         {
