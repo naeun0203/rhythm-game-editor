@@ -1,6 +1,49 @@
 {
     "Music": "Welcome To My Garden",
     "BPM": 100.0,
-    "noteCount": 0,
-    "note": []
+    "noteCount": 22,
+    "note": [
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 2,
+            "StartTime": 0.30000000000000007,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 4,
+            "StartTime": 0.45,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 2,
+            "StartTime": 0.75,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 1,
+            "StartTime": 1.05,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 3,
+            "StartTime": 1.2000000000000002,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 2,
+            "StartTime": 1.35,
+            "EndTime": 0.0
+        }
+    ]
 }
