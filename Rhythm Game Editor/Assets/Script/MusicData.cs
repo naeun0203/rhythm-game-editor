@@ -78,16 +78,16 @@ public class MusicData : MonoBehaviour
         int LineNum = 0;
         switch(NoteClone.transform.position.x)
         {
-            case (-3.75f):
+            case (-375f):
                 LineNum = 1;
                 break;
-            case (-1.25f):
+            case (-125f):
                 LineNum = 2;
                 break;
-            case (1.25f):
+            case (125f):
                 LineNum = 3;
                 break;
-            case (3.75f):
+            case (375f):
                 LineNum = 4;
                 break;
         }

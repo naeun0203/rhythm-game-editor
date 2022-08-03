@@ -1,13 +1,307 @@
 {
     "Music": "Welcome To My Garden",
     "BPM": 100.0,
-    "noteCount": 22,
+    "noteCount": 74,
     "note": [
         {
             "Type": 0,
             "Color": 0,
+            "LineNum": 0,
+            "StartTime": -120.52281885147096,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -84.0,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -84.0,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -82.23305997848512,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -81.66328353881836,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -81.27963294982911,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -78.31852188110352,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -76.63999977111817,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -76.58132438659669,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -75.51633110046387,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -73.75127182006837,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -71.89588279724122,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -71.31563873291016,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -71.08742561340333,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -68.17550773620606,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -60.247177696228039,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -58.52635135650635,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -54.0,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -51.24578704833985,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -48.9607421875,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -47.597991943359378,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -46.41261730194092,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -44.73061103820801,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -44.576492452621469,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -41.81690788269043,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -39.49881172180176,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -30.416545867919923,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -29.72506179809571,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -28.357282638549806,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -27.856623840332035,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -27.419302940368654,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -26.25766944885254,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -22.96033401489258,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -12.485742378234864,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -11.664287185668947,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -11.228636169433596,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -9.0,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -8.715479278564459,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -4.787640762329104,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -4.170623779296875,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -2.7688255310058595,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": -0.25366363525390769,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
             "LineNum": 2,
-            "StartTime": 0.30000000000000007,
+            "StartTime": 0.3000000000000001,
             "EndTime": 0.0
         },
         {
@@ -43,6 +337,76 @@
             "Color": 0,
             "LineNum": 2,
             "StartTime": 1.35,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": 13.095419311523436,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": 15.213450622558593,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": 22.461315155029298,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": 26.010340881347657,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": 34.93232688903809,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": 42.0453556060791,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": 47.34253997802735,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": 51.0,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": 51.0,
+            "EndTime": 0.0
+        },
+        {
+            "Type": 0,
+            "Color": 0,
+            "LineNum": 0,
+            "StartTime": 60.55450782775879,
             "EndTime": 0.0
         }
     ]

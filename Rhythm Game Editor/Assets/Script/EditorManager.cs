@@ -45,7 +45,7 @@ public class EditorManager : MonoBehaviour
         OnScroll();
         if (isPlay)
         {
-            grid.MoveGrid(Vector2.down * Time.smoothDeltaTime * 5);
+            grid.MoveGrid(Vector2.down * Time.smoothDeltaTime * 500);
         }
         if (isScroll)
         {

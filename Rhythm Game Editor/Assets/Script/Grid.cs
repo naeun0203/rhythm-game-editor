@@ -24,7 +24,7 @@ public class Grid : MonoBehaviour
 
     private void BeatBarLocation()
     {
-        Beat4Location = music.BeatTime * 5;
+        Beat4Location = music.BeatTime * 500;
         Beat8Location = Beat4Location/2;
         Beat16Location = Beat8Location / 2;
 
@@ -44,26 +44,25 @@ public class Grid : MonoBehaviour
     }
     public void BeatSetActive(bool isBeat16, bool isBeat8)
     {
-        for(int i = 0; i < Beat16.Length; i++)
+        foreach(var beat16 in Beat16)
         {
-            Beat16[i].SetActive(isBeat16);
-
+            beat16.SetActive(isBeat16);
         }
-        for (int i = 0; i < Beat8.Length; i++)
+        foreach (var beat8 in Beat8)
         {
-            Beat8[i].SetActive(isBeat8);
+            beat8.SetActive(isBeat8);
         }
     }
     public void ScrollGrid()
     {
         if (manager.Scroll < 0) // 위로
         {
-            MoveGrid(Vector2.up * 0.5f);
+            MoveGrid(Vector2.up * 50f);
             music.ScrollMusic(-0.1f);
         }
         else if (manager.Scroll > 0 ) // 아래로
         {
-            MoveGrid(Vector2.down * 0.5f);
+            MoveGrid(Vector2.down * 50f);
             music.ScrollMusic(0.1f);
         }
     }
