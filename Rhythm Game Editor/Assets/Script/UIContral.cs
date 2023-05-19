@@ -7,7 +7,11 @@ public class UIContral : MonoBehaviour
 {
     public Slider slider;
     public Grid grid;
-    public EditorManager manager;
+    private EditorManager manager;
+    private void Start()
+    {
+        manager = EditorManager.Instance;
+    }
     public void HandleChange(float value)
     {
         SliderValue(value, 0.5f);

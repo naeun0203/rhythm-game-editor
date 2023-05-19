@@ -2,83 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
-public class EditorManager : MonoBehaviour
+public class EditorManager : Singleton<EditorManager>
 {
     public bool isPlay { get; set; }
-    public bool isScroll { get; set; }
-    public float Scroll { get; set; }
 
     public Grid grid;
     public Music music;
     public NoteContral noteContral;
     public GameObject[] Line;
-    public List<Transform> BeatBar = new List<Transform>();
-    public GameObject[] Grid;
+    Dictionary<KeyCode, Action> keyDictionary;
 
-    void Awake()
+    private void Start()
     {
-        Grid = GameObject.FindGameObjectsWithTag("Grid");
-        for(int i = 0; i < Grid.Length; i++)
+        keyDictionary = new Dictionary<KeyCode, Action>
         {
-            for(int j = 0; j < Grid[i].transform.childCount; j++)
-            {
-                BeatBar.Add(Grid[i].transform.GetChild(j));
-            }
-        }
-
+            { KeyCode.Space, KeyDownSpace }
+        };
     }
     private void Update()
     {
-        controlar();
-
-        grid.GridLocation();
-        
+        Controlar();       
     }
     public void InputBeatBar()
     {
 
     }
 
-    private void controlar()
+    private void Controlar()
     {
-        OnScroll();
-        if (isPlay)
+        if (Input.anyKeyDown)
         {
-            grid.MoveGrid(Vector2.down * Time.smoothDeltaTime * 500);
-        }
-        if (isScroll)
-        {
-            grid.ScrollGrid();
-        }
-        if (Input.GetKeyDown("space"))
-        {
-            if (!isPlay)
+            foreach (var dic in keyDictionary)
             {
-                music.MusicPlay();
-            }
-            else
-            {
-                music.MusicPause();
+                if (Input.GetKeyDown(dic.Key))
+                {
+                    dic.Value();
+                }
             }
         }
-    }
-    private void OnScroll()
-    {
         if (Input.mouseScrollDelta.y > 0)
         {
-            isScroll = true;
-            Scroll = 1f;
+            grid.ScrollGrid(1f);
         }
-        else if(Input.mouseScrollDelta.y < 0)
+        else if (Input.mouseScrollDelta.y < 0)
         {
-            isScroll = true;
-            Scroll = -1f;
+            grid.ScrollGrid(-1f);
+        }
+    }
+
+    private void KeyDownSpace()
+    {
+        if (!isPlay)
+        {
+            music.MusicPlay();
         }
         else
         {
-            isScroll = false;
-            Scroll = 0f;
+            music.MusicPause();
         }
     }
 }

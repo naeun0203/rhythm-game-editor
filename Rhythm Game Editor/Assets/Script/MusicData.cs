@@ -34,12 +34,17 @@ public class NoteData
 }
 public class MusicData : MonoBehaviour
 {
-    public EditorManager manager;
+    private EditorManager manager;
     public Grid grid;
     public Dropdown MusicList;
     public Music music;
     public NoteData noteData;
     [ContextMenu("To Json Data")]
+    private void Start()
+    {
+        manager = EditorManager.Instance;
+        LoadNoteData();
+    }
     public void SaveNoteData()
     {
         string jsonData = JsonUtility.ToJson(noteData, true);
@@ -56,11 +61,6 @@ public class MusicData : MonoBehaviour
         music.MusicStop();
         manager.InputBeatBar();
         grid.CreateGrid();
-    }
-    
-    private void Awake()
-    {
-        LoadNoteData();
     }
 
     public void InputData(GameObject Note, int color)

@@ -5,22 +5,23 @@ using UnityEngine;
 
 public class NoteContral : MonoBehaviour
 {
-    public EditorManager manager;
+    private EditorManager manager;
     public MusicData data;
+    public Grid grid;
     public GameObject note;
-    public GameObject NoteArea;
-    Camera Camera;
+    public Camera Camera;
     Vector3 mousePos;
     // Start is called before the first frame update
+
     private void Start()
     {
-        Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        manager = EditorManager.Instance;
     }
     void Update()
     {
         Ray();
         //hitNote();
-        if (note.activeSelf == true)
+        if (note.activeSelf)
         {
             noteMove();
             if (Input.GetMouseButtonDown(0))
@@ -56,10 +57,7 @@ public class NoteContral : MonoBehaviour
                 TriggerObject = null;
             }
         }
-        else
-        {
-            NoteDisable();
-        }
+        note.SetActive(hit.collider == null);
     }
     private void noteMove()
     {
@@ -139,13 +137,13 @@ public class NoteContral : MonoBehaviour
                 x = (manager.Line[i].transform.position.x + manager.Line[i + 1].transform.position.x) / 2;
             }
         }
-        for (int i = 0; i < manager.BeatBar.Count-1; i++)
+        for (int i = 0; i < grid.BeatBar.Count-1; i++)
         {
-            if ( mousePos.y > manager.BeatBar[i].transform.position.y)
+            if ( mousePos.y > grid.BeatBar[i].transform.position.y)
             {
-                if(mousePos.y < manager.BeatBar[i + 1].transform.position.y)
+                if(mousePos.y < grid.BeatBar[i + 1].transform.position.y)
                 {
-                    y = manager.BeatBar[i].transform.position.y;
+                    y = grid.BeatBar[i].transform.position.y;
                 }
             }
         }

@@ -1188,7 +1188,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 679392986}
   grid: {fileID: 5185875427257949748}
-  manager: {fileID: 0}
 --- !u!1 &713985736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,7 +2458,6 @@ MonoBehaviour:
     Music: {fileID: 8300000, guid: e600f30a8f95723429a0eaab64849a44, type: 3}
   - Name: Akaza VS Rengoku
     Music: {fileID: 8300000, guid: 7263971da7e708c44ba8ef7fac85e5a7, type: 3}
-  editor: {fileID: 1920546353}
   musicData: {fileID: 1920546355}
   audio: {fileID: 1538738962}
 --- !u!82 &1538738962
@@ -3284,7 +3282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa5ec881f054394095c614db59256b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1920546353}
   grid: {fileID: 5185875427257949748}
   MusicList: {fileID: 592145995}
   music: {fileID: 1538738961}
@@ -3524,7 +3521,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 2023674771}
   grid: {fileID: 5185875427257949748}
-  manager: {fileID: 1920546353}
 --- !u!114 &2023674770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4267,7 +4263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b670c5a66e9cf44f93e2a11fd83daed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1920546353}
   music: {fileID: 1538738961}
   JudgmentLine: {fileID: 5185875426948765501}
   NoteContainer: {fileID: 956124301}
@@ -4372,10 +4367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0945981aaa3643342bf2be4b0b539d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1920546353}
   data: {fileID: 1920546355}
   note: {fileID: 828278859}
-  NoteArea: {fileID: 5185875428581986559}
+  Camera: {fileID: 5185875426946218275}
   noteTrigger: 0
   TriggerObject: {fileID: 0}
 --- !u!61 &5185875428581986561

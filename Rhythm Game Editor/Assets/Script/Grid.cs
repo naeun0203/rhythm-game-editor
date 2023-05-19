@@ -6,40 +6,62 @@ using UnityEngine.UI;
 
 public class Grid : MonoBehaviour
 {
-    public EditorManager manager;
+    private EditorManager manager;
     public Music music;
     public GameObject JudgmentLine;
     public GameObject NoteContainer;
+    public GameObject[] GridObject;
     private GameObject[] Beat16;
     private GameObject[] Beat8;
-    private float Beat4Location;
-    private float Beat8Location;
-    private float Beat16Location;
-
-    private void Start()
+    private float Beat4Location, Beat8Location, Beat16Location;
+    public List<Transform> BeatBar = new List<Transform>();
+    private void Awake()
     {
+        manager = EditorManager.Instance;
         Beat16 = GameObject.FindGameObjectsWithTag("Beat16");
         Beat8 = GameObject.FindGameObjectsWithTag("Beat8");
     }
-
+    /// <summary>
+    /// BeatBar 받아오기
+    /// </summary>
+    private void init()
+    {
+        for (int i = 0; i < GridObject.Length; i++)
+        {
+            for (int j = 0; j < GridObject[i].transform.childCount; j++)
+            {
+                BeatBar.Add(GridObject[i].transform.GetChild(j));
+            }
+        }
+    }
+    private void Update()
+    {
+        GridLocation();
+        if (manager.isPlay)
+        {
+            MoveGrid(Vector2.down * Time.smoothDeltaTime * 500);
+        }
+    }
+    /// <summary>
+    /// BPM에 따른 BeatBar 간격 조정
+    /// </summary>
     private void BeatBarLocation()
     {
         Beat4Location = music.BeatTime * 500;
-        Beat8Location = Beat4Location/2;
-        Beat16Location = Beat8Location / 2;
-
-        Debug.Log(Beat4Location * 8 - JudgmentLine.transform.position.y);
+        Beat8Location = Beat4Location * 0.5f;
+        Beat16Location = Beat8Location * 0.5f;
     }
+
     public void CreateGrid()
     {
         BeatBarLocation();
-        for (int i = 0; i < manager.Grid.Length; i++)
+        for (int i = 0; i < GridObject.Length; i++)
         {
-            for(int j = 0; j < manager.Grid[i].transform.childCount; j++)
+            for(int j = 0; j < GridObject[i].transform.childCount; j++)
             {
-                manager.Grid[i].transform.GetChild(j).transform.position = new Vector3(0, manager.Grid[i].transform.GetChild(0).transform.position.y + (j) * Beat16Location, 0);
+                GridObject[i].transform.GetChild(j).transform.position = new Vector3(0, GridObject[i].transform.GetChild(0).transform.position.y + (j) * Beat16Location, 0);
             }
-            manager.Grid[i].transform.position = new Vector3(0, JudgmentLine.transform.position.y + Beat4Location * 4 * i);
+            GridObject[i].transform.position = new Vector3(0, JudgmentLine.transform.position.y + Beat4Location * 4 * i);
         }
     }
     public void BeatSetActive(bool isBeat16, bool isBeat8)
@@ -53,14 +75,14 @@ public class Grid : MonoBehaviour
             beat8.SetActive(isBeat8);
         }
     }
-    public void ScrollGrid()
+    public void ScrollGrid(float scroll)
     {
-        if (manager.Scroll < 0) // 위로
+        if (scroll < 0) // 위로
         {
             MoveGrid(Vector2.up * 50f);
             music.ScrollMusic(-0.1f);
         }
-        else if (manager.Scroll > 0 ) // 아래로
+        else if (scroll > 0 ) // 아래로
         {
             MoveGrid(Vector2.down * 50f);
             music.ScrollMusic(0.1f);
@@ -68,24 +90,24 @@ public class Grid : MonoBehaviour
     }
     public void MoveGrid(Vector2 move)
     {
-        for (int i = 0; i < manager.Grid.Length; i++)
+        for (int i = 0; i < GridObject.Length; i++)
         {
-            manager.Grid[i].transform.Translate(move);
+            GridObject[i].transform.Translate(move);
         }
         NoteContainer.transform.Translate(move);
     }
 
     public void GridLocation()
     {
-        for (int i = 0; i < manager.Grid.Length; i++)
+        for (int i = 0; i < GridObject.Length; i++)
         {
-            if (manager.Grid[i].transform.position.y <= - Beat4Location * 8 + JudgmentLine.transform.position.y) // JudgmentLine => -5
+            if (GridObject[i].transform.position.y <= - Beat4Location * 8 + JudgmentLine.transform.position.y) // JudgmentLine => -5
             {
-                manager.Grid[i].transform.position = new Vector2(0, Beat4Location * 4 + JudgmentLine.transform.position.y);
+                GridObject[i].transform.position = new Vector2(0, Beat4Location * 4 + JudgmentLine.transform.position.y);
             }
-            if (manager.Grid[i].transform.position.y >= Beat4Location * 8 + JudgmentLine.transform.position.y)
+            if (GridObject[i].transform.position.y >= Beat4Location * 8 + JudgmentLine.transform.position.y)
             {
-                manager.Grid[i].transform.position = new Vector2(0, JudgmentLine.transform.position.y - Beat4Location * 4 );
+                GridObject[i].transform.position = new Vector2(0, JudgmentLine.transform.position.y - Beat4Location * 4 );
             }
         }
     }

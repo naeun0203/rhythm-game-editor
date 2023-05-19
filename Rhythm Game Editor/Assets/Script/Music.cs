@@ -12,7 +12,7 @@ public class MusicList
 public class Music : MonoBehaviour
 {
     public MusicList[] music;
-    public EditorManager editor;
+    private EditorManager manager;
     public MusicData musicData;
     public AudioSource audio;
     public float BeatTime { get; set; }
@@ -21,21 +21,26 @@ public class Music : MonoBehaviour
     public float Beat4 { get; set; }
     public float TotalSec { get; set; }
 
+    private void Start()
+    {
+        manager = EditorManager.Instance;
+    }
+
     public void MusicPlay()
     {
         audio.Play();
-        editor.isPlay = true;
+        manager.isPlay = true;
     }
 
     public void MusicPause()
     {
         audio.Pause();
-        editor.isPlay = false;
+        manager.isPlay = false;
     }
     public void MusicStop()
     {
         audio.Stop();
-        editor.isPlay = false;
+        manager.isPlay = false;
     }
     public void ChangeMusic()
     {
